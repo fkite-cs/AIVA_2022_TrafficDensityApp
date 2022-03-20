@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 
 try:
+    sys.path.insert(0, "..")
     import src.yolo_utils as yu
     from src.yolo_utils import detect2
 except Exception as e:
