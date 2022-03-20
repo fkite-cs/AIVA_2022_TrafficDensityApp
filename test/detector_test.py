@@ -3,14 +3,15 @@ import sys
 import os
 import cv2
 import numpy as np
+import yolo_utils as yu
 
 sys.path.insert(0, os.path.abspath(".."))
 
-def detect_car(model, img_path, imgsz, pt, stride, opt):
-    return [1,2,3]
+# def detect_car(model, img_path, imgsz, pt, stride, opt):
+#     return [1,2,3]
 
-def load_model(weights):
-    return None, None , None, None, None
+# def load_model(weights):
+#     return None, None , None, None, None
 
 class TestVehicleDetector(unittest.TestCase):
 
@@ -28,9 +29,9 @@ class TestVehicleDetector(unittest.TestCase):
         img_path = "imgs/austin1_cropped_2.jpg"
         img = cv2.imread(img_path)
         img = img.astype(np.float32)
-        model, imgsz, stride, pt, names = load_model(weights=weights_path)
-        # preds = yu.detect2(model, "imgs/", imgsz, pt, stride, opt)
-        preds = detect_car(model, "imgs/", imgsz, pt, stride, opt)
+        model, imgsz, stride, pt, names = yu.load_model(weights=weights_path)
+        preds = yu.detect2(model, "imgs/", imgsz, pt, stride, opt)
+        # preds = detect_car(model, "imgs/", imgsz, pt, stride, opt)
         self.assertGreater(len(preds), 0)
 
 if __name__ == "__main__":
