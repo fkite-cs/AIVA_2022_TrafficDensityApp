@@ -2,7 +2,7 @@ import cv2
 import sys
 import torch
 import numpy as np
-import yolo_utils as yu
+import src.yolo_utils as yu
 
 YOLOV5_PATH = "./yolov5"
 sys.path.insert(0,YOLOV5_PATH)

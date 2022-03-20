@@ -6,10 +6,10 @@ import numpy as np
 
 try: 
     sys.path.insert(0, os.path.abspath(".."))
-    import yolo_utils as yu
-    from yolo_utils import detect2
+    import src.yolo_utils as yu
+    from src.yolo_utils import detect2
 except Exception as e:
-    import yolo_utils as yu
+    import src.yolo_utils as yu
 
 # def detect_car(model, img_path, imgsz, pt, stride, opt):
 #     return [1,2,3]
