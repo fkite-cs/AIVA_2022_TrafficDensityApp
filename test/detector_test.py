@@ -32,8 +32,8 @@ class TestVehicleDetector(unittest.TestCase):
         img_path = "imgs/austin1_cropped_2.jpg"
         img = cv2.imread(img_path)
         img = img.astype(np.float32)
-        model, imgsz, stride, pt, names = yu.load_model(weights=weights_path)
-        preds = yu.detect2(model, "imgs/", imgsz, pt, stride, opt)
+        model, imgsz, stride, pt, names = yu.load_model(weights=weights_path, device="cpu")
+        preds = yu.detect2(model, "imgs/", imgsz, pt, stride, opt, device="cpu")
         # preds = detect_car(model, "imgs/", imgsz, pt, stride, opt)
         self.assertGreater(len(preds), 0)
 
