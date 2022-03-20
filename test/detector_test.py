@@ -7,6 +7,7 @@ import numpy as np
 try: 
     sys.path.insert(0, os.path.abspath(".."))
     import yolo_utils as yu
+    from yolo_utils import detect2
 except Exception as e:
     import yolo_utils as yu
 
