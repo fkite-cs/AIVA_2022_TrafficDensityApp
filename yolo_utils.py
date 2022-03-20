@@ -6,9 +6,9 @@ import sys
 import pdb
 import os
 
-YOLOV5_PATH = "./yolov5"
-sys.path.insert(0,YOLOV5_PATH)
-# sys.path.insert(0, os.path.abspath(".."))
+# YOLOV5_PATH = "./yolov5"
+# sys.path.insert(0,YOLOV5_PATH)
+sys.path.insert(0, os.path.abspath(".."))
 
 from yolov5.utils.general import check_img_size, non_max_suppression, scale_coords
 from yolov5.models.common import DetectMultiBackend
