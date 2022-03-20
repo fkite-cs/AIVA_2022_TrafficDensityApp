@@ -9,8 +9,8 @@ try:
     import src.yolo_utils as yu
     from src.yolo_utils import detect2
 except Exception as e:
-    # sys.path.insert(0, os.path.abspath(".."))
-    sys.path.insert(0, "/home/runner/work/TrafficDensityApp/TrafficDensityApp/")
+    sys.path.insert(0, os.path.abspath(".."))
+    # sys.path.insert(0, "/home/runner/work/TrafficDensityApp/TrafficDensityApp/")
     import src.yolo_utils as yu
     
 
