@@ -3,9 +3,13 @@ import sys
 import os
 import cv2
 import numpy as np
-import yolo_utils as yu
 
-sys.path.insert(0, os.path.abspath(".."))
+try: 
+    sys.path.insert(0, os.path.abspath(".."))
+    import yolo_utils as yu
+except Exception as e:
+    print("error_: ", e)
+    print("path ", sys.path)
 
 # def detect_car(model, img_path, imgsz, pt, stride, opt):
 #     return [1,2,3]
