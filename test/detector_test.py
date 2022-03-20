@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 
 try:
+    sys.path.insert(0, "..")
     import src.yolo_utils as yu
     from src.yolo_utils import detect2
 except Exception as e:
@@ -21,7 +22,14 @@ except Exception as e:
 
 class TestVehicleDetector(unittest.TestCase):
 
+
     def test_load_img(self):
+        img_path = "imgs/austin1_cropped_2.jpg"
+        img = cv2.imread(img_path)
+        img = img.astype(np.float32)
+        self.assertEquals(img.dtype, "float32")
+
+    def test_detect_img(self):
 
         opt = {
             "conf_thres": 0.25,
@@ -39,6 +47,7 @@ class TestVehicleDetector(unittest.TestCase):
         preds = yu.detect2(model, "imgs/", imgsz, pt, stride, opt, device="cpu")
         # preds = detect_car(model, "imgs/", imgsz, pt, stride, opt)
         self.assertGreater(len(preds), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
