@@ -8,8 +8,7 @@ try:
     sys.path.insert(0, os.path.abspath(".."))
     import yolo_utils as yu
 except Exception as e:
-    print("error_: ", e)
-    print("path ", sys.path)
+    import yolo_utils as yu
 
 # def detect_car(model, img_path, imgsz, pt, stride, opt):
 #     return [1,2,3]
