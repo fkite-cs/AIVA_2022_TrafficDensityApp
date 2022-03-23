@@ -48,4 +48,4 @@ En las siguientes fases del proyecto se diseñarán e implementarán varias mejo
 
 * Mapa de calor. Imagen con la cantidad de vehículos detectados representado en diferentes escalas de colores. 
 * Detección de calles. Posibilidad de seleccionar diferentes calles, autopistas o cualquier vía pública para calcular su densidad de tráfico. 
-* ✨✨✨✨ Interfaz gráfica. Elegante y fácil de usar. ✨✨✨✨
+* ✨✨✨ Interfaz gráfica. Elegante y fácil de usar. ✨✨✨
