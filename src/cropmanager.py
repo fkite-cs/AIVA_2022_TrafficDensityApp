@@ -14,7 +14,8 @@ class CropManager():
             CropImg
         """
         #TODO
-        self.crop_list = None
+        self.crop_list = [5,6,7]
+        return self.crop_list
 
     def add_vehicles(self, bboxs):
         """
@@ -24,10 +25,12 @@ class CropManager():
         for i in range(len(self.crop_list)):
             self.crop_list[i].set_vehicle(bboxs[i])
 
+        return len(bboxs)
+
 
 class CropImg():
 
-    def __init__(self, n, crop, hw, dh, dw) -> None:
+    def __init__(self, n, hw, dh, dw) -> None:
         self.id = n
         self.hw = hw
         self.dh = dh
@@ -43,6 +46,7 @@ class CropImg():
             self.vehicles_list.append(
                 Vehicle(self.hw, *bb)
             )
+        return len(bboxs)
 
     def get_crop(self, img):
         return img[
