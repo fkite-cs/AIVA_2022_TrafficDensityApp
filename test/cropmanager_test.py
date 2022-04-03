@@ -26,7 +26,7 @@ class TestCropManager(unittest.TestCase):
     def test_create_crops(self):
         cm = cropmanager.CropManager()
         crop_list = cm.create_crops(img)
-        self.assertEquals(crop_list, [5,6,7])
+        self.assertEquals(len(crop_list), 400)
 
     def test_add_vehicles(self):
         cm = cropmanager.CropManager()

@@ -1,3 +1,5 @@
+import numpy as np
+
 from src.vehicle import Vehicle
 
 
@@ -14,7 +16,17 @@ class CropManager():
             CropImg
         """
         #TODO
-        self.crop_list = [5,6,7]
+        imgheight = img.shape[0]
+        imgwidth = img.shape[1]
+        N = self.crop_size
+        croped_list = []
+        n = 0
+        for y in range(0, imgheight, N):
+            for x in range(0, imgwidth, N):
+                croped_list.append(CropImg(n, (y, x), N, N))
+                n += 1
+
+        self.crop_list = np.array(croped_list)
         return self.crop_list
 
     def add_vehicles(self, bboxs):
