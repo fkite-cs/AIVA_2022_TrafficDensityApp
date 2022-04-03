@@ -35,7 +35,7 @@ class CropManager():
                 m: number of crops
         """
         for i in range(len(self.crop_list)):
-            self.crop_list[i].set_vehicle(bboxs[i])
+            self.crop_list[i].set_vehicles(bboxs[i])
 
         return len(bboxs)
 
