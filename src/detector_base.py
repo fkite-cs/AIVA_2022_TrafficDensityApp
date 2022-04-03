@@ -20,11 +20,11 @@ class DetectorBase():
 
 class ModelInterface():
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, config) -> None:
+        self.config = config
 
-    def forward(self):
-        pass
+    def forward(self, *arg, **args):
+        raise NotImplementedError
 
     def bbox_2_vehicle(self, bbox):
         pass
@@ -33,8 +33,7 @@ class ModelInterface():
 class YOLO(ModelInterface):
     
     def __init__(self, config) -> None:
-        super().__init__()
-        self.config = config
+        super().__init__(config)
         self.__load_model()
 
     def __load_model(self):
@@ -46,5 +45,5 @@ class YOLO(ModelInterface):
 class SSD(ModelInterface):
 
     def __init__(self, config) -> None:
-        super().__init__()
+        super().__init__(config)
         self.config = config
