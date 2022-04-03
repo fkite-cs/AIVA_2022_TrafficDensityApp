@@ -48,12 +48,12 @@ class TestCropImg(unittest.TestCase):
         bboxslen = c.set_vehicles(np.ones((3,4)))
         self.assertGreater(bboxslen, 1)
 
-    def test_crop(self):
+    def test_get_crop(self):
         c = cropmanager.CropImg(n, hw, dh, dw)
-        a = c.set_vehicles(img)
-        self.assertEquals(a, img[
+        a = c.get_crop(img)
+        self.assertEquals(a.all(), img[
             hw[0]:hw[0] + dh,
-            hw[1]:hw[1] + dw])
+            hw[1]:hw[1] + dw].all())
 
 if __name__ == "__main__":
     unittest.main()
