@@ -17,7 +17,7 @@ class CropManager():
         """
         for i, c in enumerate(self.crop_list):
             c.set_vehicle(bboxs[i])
-        
+
 
 class CropImg():
 
