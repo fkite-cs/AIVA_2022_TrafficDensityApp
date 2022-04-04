@@ -1,4 +1,5 @@
 import argparse
+import os
 
 from src.tfapp import TFApp 
 from types import SimpleNamespace
@@ -28,6 +29,9 @@ if __name__ == "__main__":
     app = TFApp(model_type=model_type, vd_config=config)
 
     img_path = args.img_path
+    
+    if not os.path.exists(args.out_folder):
+        os.makedirs(args.out_folder)
 
     app.main(img_path, args.out_folder)
     print("finish :)")
