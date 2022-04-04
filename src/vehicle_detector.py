@@ -17,7 +17,7 @@ class VehicleDetector():
         """
         self.img = img
         self.cm.create_crops(img)
-        bbox_list = self.detector.forward(self.cm.crop_list)
+        bbox_list = self.detector.forward(self.cm.get_crops(img))
         self.cm.add_vehicles(bbox_list)
         self.ghm = self.hm.run(self.cm)
         return self.ghm

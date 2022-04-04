@@ -40,6 +40,13 @@ class CropManager():
         return len(bboxs)
 
 
+    def get_crops(self, img):
+        crop_list = []
+        for i, ci in enumerate(self.crop_list):
+            crop_list.append(ci.get_crop(img))
+        return crop_list
+
+
 class CropImg():
 
     def __init__(self, n, hw, dh, dw) -> None:
