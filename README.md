@@ -50,6 +50,13 @@ Para lanzar la aplicación es necesario llamar a la función main con dos argume
 python main.py --img_path [PATH/TO/IMG] --out_folder [OUTPUT/FOLDER]
 ~~~
 
+Para ejecutar los test, basataría con movernos a la carpeta de test/ y ejecutar los diferentes .py que aparezcan disponibles en ella.
+
+~~~
+cd test/
+python [TESTFILE_NAME]
+~~~
+
 # Trabajos Futuros 
 
 En las siguientes fases del proyecto se diseñarán e implementarán varias mejoras como: 
