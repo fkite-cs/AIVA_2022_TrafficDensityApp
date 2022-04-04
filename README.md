@@ -38,26 +38,26 @@ source virtual_environment/bin/activate
 python -m pip install -r requirements.txt
 ~~~
 
-Al terminar estos pasos, será capaz de ejecutar la demo de detección que se ha desarrollado. 
+Al terminar estos pasos, el usruario será capaz de ejecutar la demo de detección que se ha desarrollado. 
 
 # Ejecución
 Una imagen de prueba se descargar desde este [enlace](https://drive.google.com/drive/folders/1JGlKaW8ph1TYesDpVoNz4p6J_-94aBEd?usp=sharing).
 
 Para lanzar la aplicación es necesario llamar a la función main con dos argumentos
-* `img_path`: ruta de la imagen que se va a estudiar.
+* `img_path`: ruta de la imagen que se va a analizar/estudiar.
 * `out_folder`: carpeta donde se guardan las detecciones.
 ~~~
 python main.py --img_path [PATH/TO/IMG] --out_folder [OUTPUT/FOLDER]
 ~~~
 
-Para ejecutar los test, basataría con movernos a la carpeta de test/ y ejecutar los diferentes .py que aparezcan disponibles en ella.
+Para ejecutar los test, es suficiente con moverse a la carpeta de test/ y ejecutar los diferentes *.py disponibles en ella.
 
 ~~~
 cd test/
 python [TESTFILE_NAME]
 ~~~
 
-# Trabajos Futuros 
+# Trabajos futuros 
 
 En las siguientes fases del proyecto se diseñarán e implementarán varias mejoras como: 
 
