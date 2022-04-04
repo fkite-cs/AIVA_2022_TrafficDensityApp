@@ -1,3 +1,4 @@
+import cv2
 from src.cropmanager import CropManager
 from src.detector_base import DetectorBase
 from src.heat_map import HeatMap
@@ -21,5 +22,8 @@ class VehicleDetector():
         bbox_list = self.detector.forward(self.cm.get_crops(img))
         self.cm.add_vehicles(bbox_list)
         self.ghm = self.hm.run(self.cm)
-        pdb.set_trace()
+        
+        for i, c in enumerate(self.cm.crop_list):
+            _c = c.draw_global_rectangles(img)
+            cv2.imwrite(f"examples/crops/{str(i)}.png", _c)
         return self.ghm

@@ -27,8 +27,6 @@ class ModelInterface():
     def forward(self, *arg, **args):
         raise NotImplementedError
 
-    def bbox_2_vehicle(self, bbox):
-        pass
     
 
 class YOLO(ModelInterface):

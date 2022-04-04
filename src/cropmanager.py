@@ -59,7 +59,7 @@ class CropImg():
 
     def set_vehicles(self, bboxs):
         """
-            bboxs: (n, 4)
+            bboxs: (n, 4) y x h w
         """
         for i in range(len(bboxs)):
             bb = bboxs[i]
@@ -74,7 +74,7 @@ class CropImg():
             self.hw[1]:self.hw[1] + self.dw
         ]
 
-    def get_result_crop(self, img):
+    def draw_global_rectangles(self, img):
         c = self.get_crop(img)
         c = self.draw_rectangles(c, self.vehicles_list)
         return c
@@ -86,8 +86,8 @@ class CropImg():
             xywh = [v.x, v.y, v.dx, v.dy]
             cv2.rectangle(
                 img,
-                (int(xywh[0]), int(xywh[1])),
-                (int(xywh[0] + xywh[2]), int(xywh[1] + xywh[3])),
+                (int(xywh[1]), int(xywh[0])),
+                (int(xywh[1] + xywh[3]), int(xywh[0] + xywh[2])),
                 (255,0,0),
                 thickness=1,
                 lineType=cv2.LINE_AA
