@@ -3,6 +3,7 @@ from src.cropmanager import CropManager
 from src.detector_base import DetectorBase
 from src.heat_map import HeatMap
 import pdb
+import os
 
 class VehicleDetector():
 
@@ -12,7 +13,7 @@ class VehicleDetector():
         self.hm = HeatMap()
 
 
-    def run(self, img):
+    def run(self, img, out_folder):
         """
             img: (5000,5000)
         """
@@ -22,8 +23,8 @@ class VehicleDetector():
         bbox_list = self.detector.forward(self.cm.get_crops(img))
         self.cm.add_vehicles(bbox_list)
         self.ghm = self.hm.run(self.cm)
-        
         for i, c in enumerate(self.cm.crop_list):
             _c = c.draw_global_rectangles(img)
-            cv2.imwrite(f"examples/crops/{str(i)}.png", _c)
+            path = os.path.join(out_folder, f"{str(i)}.png")
+            cv2.imwrite(path, _c)
         return self.ghm

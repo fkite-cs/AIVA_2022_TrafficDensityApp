@@ -9,8 +9,8 @@ class TFApp():
         self.vd_config = vd_config
         self.model_type = model_type
 
-    def run(self, img, *arg, **args):
+    def main(self, img, out_folder, *arg, **args):
         img = cv2.imread(img)
         vd_instance = vd.VehicleDetector(self.model_type, self.vd_config)
-        ghm = vd_instance.run(img)
+        ghm = vd_instance.run(img, out_folder)
         

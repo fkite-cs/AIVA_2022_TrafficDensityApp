@@ -1,3 +1,5 @@
+import argparse
+
 from src.tfapp import TFApp 
 from types import SimpleNamespace
 
@@ -17,10 +19,15 @@ if __name__ == "__main__":
         "yolo": opt
     }
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--img_path", type=str, required=True)
+    parser.add_argument("--out_folder", type=str, required=True)
+    args = parser.parse_args()
+
     config = SimpleNamespace(**config)
     app = TFApp(model_type=model_type, vd_config=config)
 
-    img_path = "examples/austin1.tif"
+    img_path = args.img_path
 
-    app.run(img_path)
+    app.main(img_path, args.out_folder)
     print("finish :)")
