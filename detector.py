@@ -38,7 +38,10 @@ if __name__ == "__main__":
     img = cv2.imread(img_path)
     img = img.astype(np.float32)
     img_path = "imgs/austin1_cropped_2.jpg"
-    img = np.array([img, cv2.imread(img_path).astype(np.float32)])
+    img = np.array([
+        img, cv2.imread(img_path).astype(np.float32),
+        cv2.imread("examples/aa.png").astype(np.float32)
+    ])
     # img = np.array([img])
     model, imgsz, stride, pt, names = yu.load_model(weights=weights_path)
     pt = True

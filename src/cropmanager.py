@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 
 from src.vehicle import Vehicle
@@ -72,3 +73,23 @@ class CropImg():
             self.hw[0]:self.hw[0] + self.dh,
             self.hw[1]:self.hw[1] + self.dw
         ]
+
+    def get_result_crop(self, img):
+        c = self.get_crop(img)
+        c = self.draw_rectangles(c, self.vehicles_list)
+        return c
+
+    def draw_rectangles(self, img, pred):
+        img = img.astype(np.uint8)
+        for _, v in enumerate(pred):
+        # for *xywh, conf, cls in reversed(pred):
+            xywh = [v.x, v.y, v.dx, v.dy]
+            cv2.rectangle(
+                img,
+                (int(xywh[0]), int(xywh[1])),
+                (int(xywh[0] + xywh[2]), int(xywh[1] + xywh[3])),
+                (255,0,0),
+                thickness=1,
+                lineType=cv2.LINE_AA
+            )
+        return img

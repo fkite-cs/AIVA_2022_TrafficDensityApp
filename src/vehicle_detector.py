@@ -1,7 +1,7 @@
 from src.cropmanager import CropManager
 from src.detector_base import DetectorBase
 from src.heat_map import HeatMap
-
+import pdb
 
 class VehicleDetector():
 
@@ -15,9 +15,11 @@ class VehicleDetector():
         """
             img: (5000,5000)
         """
+        # pdb.set_trace()
         self.img = img
         self.cm.create_crops(img)
         bbox_list = self.detector.forward(self.cm.get_crops(img))
         self.cm.add_vehicles(bbox_list)
         self.ghm = self.hm.run(self.cm)
+        pdb.set_trace()
         return self.ghm
