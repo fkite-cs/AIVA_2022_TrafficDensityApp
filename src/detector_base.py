@@ -1,3 +1,4 @@
+import torch
 import numpy as np
 import src.yolo_utils as yu
 
@@ -37,10 +38,19 @@ class YOLO(ModelInterface):
         self.__load_model()
 
     def __load_model(self):
-        self.model = yu.load_model(self.config.weights_path, self.config.device)
+        self.model, self.imgsz, self.stride, self.pt, self.names = \
+            yu.load_model(self.config.weights_path, self.config.device)
 
     def forward(self, img):
-        return np.random.randint(low=0,high=10, size=(10,5,4))
+        """
+            img: (n,h,w,3)
+        """
+        # return np.random.randint(low=0,high=10, size=(10,5,4))
+        return yu.detect_multi(
+            self.model, img, self.imgsz, self.pt,
+            self.stride, self.config.yolo, device=self.config.device
+        )
+
 
 class SSD(ModelInterface):
 

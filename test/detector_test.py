@@ -7,7 +7,7 @@ import numpy as np
 try:
     sys.path.insert(0, "..")
     import src.yolo_utils as yu
-    from src.yolo_utils import detect2
+    from src.yolo_utils import detect_from_folder
 except Exception as e:
     # sys.path.insert(0, os.path.abspath(".."))
     sys.path.insert(0, "/home/runner/work/AIVA_2022_TrafficDensityApp/AIVA_2022_TrafficDensityApp/")
@@ -44,7 +44,7 @@ class TestVehicleDetector(unittest.TestCase):
         img = cv2.imread(img_path)
         img = img.astype(np.float32)
         model, imgsz, stride, pt, names = yu.load_model(weights=weights_path, device="cpu")
-        preds = yu.detect2(model, "imgs/", imgsz, pt, stride, opt, device="cpu")
+        preds = yu.detect_from_folder(model, "imgs/", imgsz, pt, stride, opt, device="cpu")
         # preds = detect_car(model, "imgs/", imgsz, pt, stride, opt)
         self.assertGreater(len(preds), 0)
 

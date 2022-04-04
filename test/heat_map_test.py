@@ -4,7 +4,7 @@ import numpy as np
 
 try:
     sys.path.insert(0, "..")
-    from src.yolo_utils import detect2
+    from src.yolo_utils import detect_from_folder
 except Exception as e:
     # sys.path.insert(0, os.path.abspath(".."))
     sys.path.insert(0, "/home/runner/work/AIVA_2022_TrafficDensityApp/AIVA_2022_TrafficDensityApp/")
