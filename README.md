@@ -41,7 +41,7 @@ python -m pip install -r requirements.txt
 Al terminar estos pasos, será capaz de ejecutar la demo de detección que se ha desarrollado. 
 
 # Ejecución
-Una imagen de prueba se descargar desde este [enlace](`https://drive.google.com/drive/folders/1JGlKaW8ph1TYesDpVoNz4p6J_-94aBEd?usp=sharing`).
+Una imagen de prueba se descargar desde este [enlace](https://drive.google.com/drive/folders/1JGlKaW8ph1TYesDpVoNz4p6J_-94aBEd?usp=sharing).
 
 Para lanzar la aplicación es necesario llamar a la función main con dos argumentos
 * `img_path`: ruta de la imagen que se va a estudiar.
