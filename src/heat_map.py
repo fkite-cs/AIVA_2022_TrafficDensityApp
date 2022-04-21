@@ -4,6 +4,8 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+import pdb
+
 class HeatMap():
 
     def __init__(self) -> None:
@@ -32,18 +34,19 @@ class HeatMap():
         h = 30
         xc = x_mesh + (grid_size / 2)
         yc = y_mesh + (grid_size / 2)
-        
+        cp_l = len(crop_list)
         for crop in crop_list:
             for vehicle in crop.vehicles_list:
                 gy, gx = vehicle.get_global_coordinates()
-                y = int(gy + vehicle.dy/2)
-                x = int(gx + vehicle.dx/2)
+                _y = int(gy + vehicle.dy/2)
+                _x = int(gx + vehicle.dx/2)
                 
-                x.append(x)
-                y.append(y)
+                x.append(_x)
+                y.append(_y)
                 
         intensity_list = []
         for j in range(len(xc)):
+            print(f"heatmap {j+1}/{len(xc)}")
             intensity_row = []
             for k in range(len(xc[0])):
                 kde_value_list = []
