@@ -10,7 +10,7 @@ TrafficDensityApp hace uso de visión artificial para la detección de vehículo
 
 </p>
 
-# Instalación 
+# Instalación en host
 
 Para poder ejecutar nuestro software el usuario necesitará como mínimo las siguientes características: 
 
@@ -40,7 +40,7 @@ python -m pip install -r requirements.txt
 
 Al terminar estos pasos, el usruario será capaz de ejecutar la demo de detección que se ha desarrollado. 
 
-# Ejecución
+# Ejecución en host
 Una imagen de prueba se descargar desde este [enlace](https://drive.google.com/drive/folders/1JGlKaW8ph1TYesDpVoNz4p6J_-94aBEd?usp=sharing).
 
 Para lanzar la aplicación es necesario llamar a la función main con dos argumentos
@@ -56,6 +56,31 @@ Para ejecutar los test, es suficiente con moverse a la carpeta de test/ y ejecut
 cd test/
 python [TESTFILE_NAME]
 ~~~
+
+# Instalación de imagen de docker
+
+Se ofrece una imagen de docker ya operativa en DockerHub. Esta imagen se puede descargar desde el siguiente [enlace](https://hub.docker.com/r/maevision/maevision_tda)
+
+Para hacer uso de esta tecnología es necesario tener instalado Docker en el dispositivo donde se va ejecutar la aplicación. Los pasos para su instalación se puede encontrar en la [página oficial](https://docs.docker.com/engine/install/ubuntu/) y para ejecutar docker sin usar `sudo` se sigue el siguiente [tutorial](https://docs.docker.com/engine/install/linux-postinstall/)
+
+Con `docker pull maevision/maevision_tda` se descarga la imagen de la nube. Este proceso puede llevar unos minutos en terminar.
+
+Se puede comprobar si la imagen se ha descargado en su sistema si ejecuta `docker images`
+
+Otra posibilidad es crear la imagen de docker usando el Dockerfile de este repositorio. Para ello seguir los siguientes comandos:
+
+~~~
+cd docker
+docker build -t maevision/maevision_tda .
+~~~
+
+# Ejecución de aplicación usando docker
+
+El script `run.sh` lanza la aplicación. Los parámetros que recibe son:
+    * `path_folder`: es una carpeta compartida entre el host y el contendor
+    * `img_name`: nombre de la imagen que se va a procesar. Esta imagen debe de estar en la carpeta del argumento anterior
+
+El resultado se guardará en `path_folder`.
 
 # Trabajos futuros 
 
