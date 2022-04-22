@@ -16,7 +16,6 @@ img = np.ones((5000,5000,3))
 imList = np.ones((5000,5000,3,5))
 data = np.ones((3,3))
 
-
 class TestHeatMap(unittest.TestCase):
     def test_init_heatmap(self):
         hp = heatmap.HeatMap()

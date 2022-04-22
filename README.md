@@ -77,8 +77,8 @@ docker build -t maevision/maevision_tda .
 # Ejecución de aplicación usando docker
 
 El script `run.sh` lanza la aplicación. Los parámetros que recibe son:
-    * `path_folder`: es una carpeta compartida entre el host y el contendor
-    * `img_name`: nombre de la imagen que se va a procesar. Esta imagen debe de estar en la carpeta del argumento anterior
+* `path_folder`: es una carpeta compartida entre el host y el contendor
+* `img_name`: nombre de la imagen que se va a procesar. Esta imagen debe de estar en la carpeta del argumento anterior
 
 El resultado se guardará en `path_folder`.
 
