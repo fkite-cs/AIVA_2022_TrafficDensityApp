@@ -87,6 +87,6 @@ El resultado se guardará en `path_folder`.
 
 En las siguientes fases del proyecto se diseñarán e implementarán varias mejoras como: 
 
-* Mapa de calor. Imagen con la cantidad de vehículos detectados representado en diferentes escalas de colores. 
+* Reducir el tiempo del mapa de calor.
 * Detección de calles. Posibilidad de seleccionar diferentes calles, autopistas o cualquier vía pública para calcular su densidad de tráfico. 
 * ✨✨✨ Interfaz gráfica. Elegante y fácil de usar. ✨✨✨
