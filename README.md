@@ -57,17 +57,17 @@ cd test/
 python [TESTFILE_NAME]
 ~~~
 
-# Instalación de imagen de docker
+# Instalación de imagen de Docker
 
-Se ofrece una imagen de docker ya operativa en DockerHub. Esta imagen se puede descargar desde el siguiente [enlace](https://hub.docker.com/r/maevision/maevision_tda)
+Se ofrece una imagen de Docker ya operativa en DockerHub. Esta imagen se puede descargar desde el siguiente [enlace](https://hub.docker.com/r/maevision/maevision_tda)
 
-Para hacer uso de esta tecnología es necesario tener instalado Docker en el dispositivo donde se va ejecutar la aplicación. Los pasos para su instalación se puede encontrar en la [página oficial](https://docs.docker.com/engine/install/ubuntu/) y para ejecutar docker sin usar `sudo` se sigue el siguiente [tutorial](https://docs.docker.com/engine/install/linux-postinstall/)
+Para hacer uso de esta tecnología es necesario tener instalado Docker en el dispositivo donde se va ejecutar la aplicación. Los pasos para su instalación se pueden encontrar en la [página oficial](https://docs.docker.com/engine/install/ubuntu/). Para ejecutar docker sin usar `sudo` se sigue el siguiente [tutorial](https://docs.docker.com/engine/install/linux-postinstall/)
 
-Con `docker pull maevision/maevision_tda` se descarga la imagen de la nube. Este proceso puede llevar unos minutos en terminar.
+Con `docker pull maevision/maevision_tda` se descarga la imagen de la nube. Este proceso puede llevar unos minutos.
 
-Se puede comprobar si la imagen se ha descargado en su sistema si ejecuta `docker images`
+Se puede comprobar si la imagen se ha descargado en su sistema si se ejecuta el comando `docker images`
 
-Otra posibilidad es crear la imagen de docker usando el Dockerfile de este repositorio. Para ello seguir los siguientes comandos:
+Otra posibilidad es crear la imagen de Docker usando el Dockerfile de este repositorio. Para ello se deben seguir los siguientes comandos:
 
 ~~~
 cd docker
@@ -77,8 +77,9 @@ docker build -t maevision/maevision_tda .
 # Ejecución de aplicación usando docker
 
 El script `run.sh` lanza la aplicación. Los parámetros que recibe son:
-* `path_folder`: es una carpeta compartida entre el host y el contendor
-* `img_name`: nombre de la imagen que se va a procesar. Esta imagen debe de estar en la carpeta del argumento anterior
+
+*`path_folder`: es una carpeta compartida entre el host y el contendor.
+*`img_name`: nombre de la imagen que se va a procesar. Esta imagen debe estar en la carpeta del argumento anterior.
 
 El resultado se guardará en `path_folder`.
 
