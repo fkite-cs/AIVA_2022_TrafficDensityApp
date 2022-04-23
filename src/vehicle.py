@@ -8,7 +8,7 @@ class Vehicle():
         self.dx = dx
 
     def get_bbox(self):
-        bbox = [self.y, self.x, self.dy, self.dx]
+        bbox = [self.x, self.y, self.dx, self.dy]
         return bbox
 
     def get_global_coordinates(self):
