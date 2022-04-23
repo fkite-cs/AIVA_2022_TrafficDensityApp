@@ -1,6 +1,7 @@
 import unittest
 import sys
 import numpy as np
+from src.cropmanager import CropImg
 
 try:
     sys.path.insert(0, "..")
@@ -20,26 +21,16 @@ class TestHeatMap(unittest.TestCase):
     def test_init_heatmap(self):
         hp = heatmap.HeatMap()
         self.assertEquals(hp.res, 1) 
-    
-    def test_local_heat_map(self):
-        hp = heatmap.HeatMap()
-        a = hp.local_heat_map(img)
-        self.assertGreater(a, 1)
 
     def test_global_heat_map(self):
         hp = heatmap.HeatMap()
-        a = hp.global_heat_map(img)
-        self.assertGreater(a, 1)
+        img = np.ones((10,10,3), dtype=np.uint8)
+        ci = CropImg(0,(0,0),0,0)
+        ci.set_vehicles(np.array([[0,0,0,0]]))
+        cl = [ci]
+        a = hp.global_heat_map(img, cl, ".")
+        self.assertEquals(a, 1)
 
-    def test_create_mask(self):
-        hp = heatmap.HeatMap()
-        a = hp.create_mask(img)
-        self.assertGreater(a, 1)
-
-    def test_run(self):
-            hp = heatmap.HeatMap()
-            a = hp.run(data)
-            self.assertEquals(a, 1)
 
 
 if __name__ == "__main__":

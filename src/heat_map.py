@@ -73,16 +73,4 @@ class HeatMap():
         plt.axis("off")
         path = os.path.join(out_folder, "heatmap.png")
         plt.savefig(path)
-
-    def create_mask(self, img):
-        """
-            return:
-                mask: (250,250)
-        """
-        return len(img)
-
-    def run(self, data):
-        """
-            data: CropManager
-        """
         return 1
