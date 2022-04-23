@@ -63,7 +63,7 @@ class CropImg():
         """
         for i in range(len(bboxs)):
             bb = bboxs[i]
-            self.vehicles_list.append(
+            self.vehicles_list.append( 
                 Vehicle(self.hw, *bb)
             )
         return len(bboxs)

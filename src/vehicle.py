@@ -1,6 +1,6 @@
 class Vehicle():
 
-    def __init__(self, global_hw, y, x, dy, dx) -> None:
+    def __init__(self, global_hw, x, y, dx, dy) -> None:
         self.global_hw = global_hw
         self.y = y
         self.x = x

@@ -22,7 +22,6 @@ class HeatMap():
             return:
                 img (5000,5000)
         """
-        
         x = []
         y = []
         
