@@ -28,7 +28,7 @@ class TestHeatMap(unittest.TestCase):
         ci = CropImg(0,(0,0),0,0)
         ci.set_vehicles(np.array([[0,0,0,0]]))
         cl = [ci]
-        a = hp.global_heat_map(img, cl, ".")
+        a = hp.global_heat_map(img, cl, ".", block_size=5)
         self.assertEquals(a, 1)
 
 
