@@ -23,15 +23,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--img_path", type=str, required=True)
     parser.add_argument("--out_folder", type=str, required=True)
+    parser.add_argument("--device", type=str, default="cpu")
     args = parser.parse_args()
 
     config = SimpleNamespace(**config)
     app = TFApp(model_type=model_type, vd_config=config)
 
     img_path = args.img_path
-    
-    if not os.path.exists(args.out_folder):
-        os.makedirs(args.out_folder)
+    if args.device != "cpu":
+        print("Coming soon...")
+    else:
+        if not os.path.exists(args.out_folder):
+            os.makedirs(args.out_folder)
 
-    app.main(img_path, args.out_folder)
-    print("finish :)")
+        app.main(img_path, args.out_folder)
+        print("finish :)")

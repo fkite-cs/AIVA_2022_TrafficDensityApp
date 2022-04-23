@@ -62,6 +62,17 @@ def get_metadata_pil():
         print(str(etiqueta))
 
 
+def renderize_image(fig_plot, new_shape=(600,600),normalize=True):
+    fig_plot.canvas.draw()
+
+    img = cv2.cvtColor(np.asarray(fig_plot.canvas.buffer_rgba()), cv2.COLOR_RGBA2BGR)
+    img = cv2.resize(img, new_shape)
+
+    if normalize:
+        img = img / 255.0
+    return img
+
+
 @jit(nopython=True, parallel=True)
 def kde_quartic(d, h):
     dn = d / h
@@ -77,27 +88,36 @@ def last_step(_xc, x, _yc, y, h):
     return _kde_value
 
 def create_heat_map(img, crop_list, out_folder="example/", block_size=1000):
+    # block_size = 100
+    # crop = crop_list[1]
+    # img = crop.get_crop(img)
     x = []
     y = []
-    
+    hh, ww, _ = img.shape
     y_grid = np.arange(0, img.shape[0])
     x_grid = np.arange(0, img.shape[1])
     x_mesh, y_mesh = np.meshgrid(x_grid, y_grid)
     
     grid_size = 1
-    h = 30
+    h = 70
     xc = x_mesh + (grid_size / 2)
     yc = y_mesh + (grid_size / 2)
     xc = xc.astype(np.float32)
     yc = yc.astype(np.float32)
     for crop in crop_list:
+    # crop = crop_list[1]
         for vehicle in crop.vehicles_list:
             gy, gx = vehicle.get_global_coordinates()
             _y = int(gy + vehicle.dy/2)
             _x = int(gx + vehicle.dx/2)
+            # print("local ", vehicle.y, vehicle.x)
+            # print("gy, gx ", gy, gx, vehicle.global_hw)
+            # _y = vehicle.y +  vehicle.dy/2
+            # _x = vehicle.x +  vehicle.dx/2
             
             x.append(_x)
             y.append(_y)
+        # break
 
     x = np.array(x)
     y = np.array(y)
@@ -135,13 +155,14 @@ def create_heat_map(img, crop_list, out_folder="example/", block_size=1000):
         print("total ", t4 - t0)
     
     intensity = np.ma.masked_array(intensity, intensity < 0.01*intensity.max())
+    
     fig, ax = plt.subplots(1, 1)
     ax.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-    cb = ax.pcolormesh(x_mesh, y_mesh, intensity, alpha=0.5, cmap="inferno")
+    cb = ax.pcolormesh(x_mesh, y_mesh, intensity, alpha=0.25, cmap="OrRd")
     fig.colorbar(cb)
     plt.axis("off")
-    path = os.path.join(out_folder, "heatmap_op.png")
-    plt.savefig(path)
+    path = os.path.join(out_folder, "crop_2.tif")
+    plt.savefig(path, dpi=1500)
 
 
     """
@@ -236,15 +257,20 @@ def create_heat_map3_optimized(img, out_folder="example/", block_size=10):
     plt.savefig(path)
 
 def create_heat_map4_optimized(img, out_folder="example/", block_size=10):
-    x = np.array([20, 50, 70, 90, 110, 130, 150, 170])
-    y = np.array([20, 50, 70, 90, 110, 130, 150, 170])
+    hh, ww, _ = img.shape
+    # x = np.arange(20,hh,80)
+    # y = np.arange(20,hh,80)
+    x = np.random.randint(0, ww, 10)
+    y = np.random.randint(0, hh, 10)
+    print("x ", x)
+    print("y ", y)
     
     y_grid = np.arange(0, img.shape[0])
     x_grid = np.arange(0, img.shape[1])
     x_mesh, y_mesh = np.meshgrid(x_grid, y_grid)
     
     grid_size = 1
-    h = 30
+    h = 150
     xc = x_mesh + (grid_size / 2)
     yc = y_mesh + (grid_size / 2)
     xc = xc.astype(np.float32)
@@ -283,15 +309,32 @@ def create_heat_map4_optimized(img, out_folder="example/", block_size=10):
         # print("t4 - t3 ", t4 - t3)
         # print("total ", t4 - t0)
     
+    intensity_color = np.copy(intensity)
+    print("intensity_color ", intensity_color.min(), intensity_color.max())
     intensity = np.ma.masked_array(intensity, intensity < 0.01*intensity.max())
+    plt.figure()
     fig, ax = plt.subplots(1, 1)
     ax.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     cb = ax.pcolormesh(x_mesh, y_mesh, intensity, alpha=0.5, cmap="inferno")
     fig.colorbar(cb)
     plt.axis("off")
-    path = os.path.join(out_folder, "heatmap_op.png")
-    plt.savefig(path)
-
+    # path = os.path.join(out_folder, "heatmap_op_2.png")
+    # plt.savefig(path)
+    # int_map = renderize_image(fig, tuple(intensity.shape), normalize=False)
+    # intensity_color = cv2.normalize(img,  norm, 0, 255, cv.NORM_MINMAX
+    intensity_color = (intensity_color - intensity_color.min()) / (intensity_color.max() - intensity_color.min())
+    intensity_color = intensity_color*255
+    intensity_color = intensity_color.astype(np.uint8)
+    intensity_color = np.expand_dims(intensity_color, axis=2)
+    h, w, _ = intensity_color.shape
+    z = np.zeros((h,w,2))
+    intensity_color = np.concatenate((intensity_color, z), axis=2)
+    intensity_color = intensity_color.astype(np.uint8)
+    # cv2.imshow("aa ", intensity_color)
+    # cv2.waitKey(0)
+    print("intensity_color ", intensity_color.min(), intensity_color.max())
+    img = cv2.addWeighted(img, 0.6, intensity_color, 0.4, 0.0)
+    cv2.imwrite("prueba2.tif", img)
 
 if __name__ == "__main__":
 

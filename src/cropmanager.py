@@ -86,8 +86,8 @@ class CropImg():
             xywh = [v.x, v.y, v.dx, v.dy]
             cv2.rectangle(
                 img,
-                (int(xywh[1]), int(xywh[0])),
-                (int(xywh[1] + xywh[3]), int(xywh[0] + xywh[2])),
+                (int(xywh[0]), int(xywh[1])),
+                (int(xywh[0] + xywh[2]), int(xywh[1] + xywh[3])),
                 (255,0,0),
                 thickness=1,
                 lineType=cv2.LINE_AA
