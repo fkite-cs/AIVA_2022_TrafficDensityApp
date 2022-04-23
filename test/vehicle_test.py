@@ -22,7 +22,7 @@ dy = 5
 class TestVehicle(unittest.TestCase):
 
     def test_init_vehicle(self):
-        v = vehicle.Vehicle(global_hw, y, x, dy, dx)
+        v = vehicle.Vehicle(global_hw, x, y, dx, dy)
         self.assertEquals(v.global_hw, global_hw)
         self.assertEquals(v.y, y)
         self.assertEquals(v.x, x)
@@ -30,12 +30,12 @@ class TestVehicle(unittest.TestCase):
         self.assertEquals(v.dx, dx)
     
     def test_get_bbox(self):
-        v = vehicle.Vehicle(global_hw, y, x, dy, dx)
+        v = vehicle.Vehicle(global_hw, x, y, dx, dy)
         bbox = v.get_bbox()
-        self.assertEquals(bbox, [y,x,dy,dx])
+        self.assertEquals(bbox, [x,y,dx,dy])
 
     def test_get_global_coordinates(self):
-        v = vehicle.Vehicle(global_hw, y, x, dy, dx)
+        v = vehicle.Vehicle(global_hw, x, y, dx, dy)
         gc = v.get_global_coordinates()
         _gc = (global_hw[0] + y, global_hw[1] + x)
         self.assertEquals(gc, _gc)
