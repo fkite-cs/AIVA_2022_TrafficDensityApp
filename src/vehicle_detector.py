@@ -24,8 +24,8 @@ class VehicleDetector():
         bbox_list = self.detector.forward(self.cm.get_crops(img))
         self.cm.add_vehicles(bbox_list) 
         self.hm.global_heat_map(self.img, self.cm.crop_list, out_folder)
-        for i, c in enumerate(self.cm.crop_list):
-            _c = c.draw_global_rectangles(img)
-            path = os.path.join(out_folder, f"{str(i)}.png")
-            cv2.imwrite(path, _c)
+        # for i, c in enumerate(self.cm.crop_list):
+        #     _c = c.draw_global_rectangles(img)
+        #     path = os.path.join(out_folder, f"{str(i)}.png")
+        #     cv2.imwrite(path, _c)
         return 1
