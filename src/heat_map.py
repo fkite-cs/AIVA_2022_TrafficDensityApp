@@ -3,6 +3,8 @@ import cv2
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+
+from tqdm import tqdm
 from numba import jit
 
 import pdb
@@ -59,8 +61,7 @@ class HeatMap():
 
         intensity = np.zeros(tuple(xc.shape), dtype=np.float32)
         len_idxs = len(idxs)
-        for i in range(len(idxs)):
-            print(f"{i+1}/{len_idxs}")
+        for i in tqdm(range(len(idxs))):
             ia, ib = idxs[i], step+idxs[i]
             if i < len_idxs - 1:
                 _xc = np.expand_dims(xc[ia:ib], axis=2)

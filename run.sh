@@ -15,5 +15,5 @@ then
     echo "Coming soon..."
 else
     echo "Running app in CPU..."
-    docker run --rm -it -v $1:$container_path maevision_tda:pro $img_path $out_path
+    docker run --rm -it -v $1:$container_path maevision/maevision_tda:v1 $img_path $out_path
 fi
