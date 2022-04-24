@@ -1,5 +1,17 @@
 #!/bin/bash
 
+host_folder=$1
+slash="/"
+
+
+if [[ "$1" = /* ]]
+then
+    echo "ruta absoluta"
+else
+    echo "ruta relativa"
+    SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+    host_folder=$SCRIPTPATH$slash$host_folder
+fi
 
 container_path="/root/dc/"
 out_name="out"
@@ -15,5 +27,5 @@ then
     echo "Coming soon..."
 else
     echo "Running app in CPU..."
-    docker run --rm -it -v $1:$container_path maevision/maevision_tda:v1 $img_path $out_path
+    docker run --rm -it -v $host_folder:$container_path maevision/maevision_tda:v1 $img_path $out_path
 fi
