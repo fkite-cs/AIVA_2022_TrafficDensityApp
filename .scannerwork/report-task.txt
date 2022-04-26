@@ -1,0 +1,7 @@
+organization=maevision
+projectKey=fkite-cs_AIVA_2022_TrafficDensityApp
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.28566
+dashboardUrl=https://sonarcloud.io/dashboard?id=fkite-cs_AIVA_2022_TrafficDensityApp
+ceTaskId=AYBlNbTewwDgmm7Z36qX
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYBlNbTewwDgmm7Z36qX
