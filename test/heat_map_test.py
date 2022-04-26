@@ -31,6 +31,12 @@ class TestHeatMap(unittest.TestCase):
         a = hp.global_heat_map(img, cl, ".", block_size=5)
         self.assertEquals(a, 1)
 
+    def test_kde(self):
+        d = 10
+        h = 1
+        r = heatmap.kde_quartic(d, h)
+        self.assertGreater(r, 0)
+
 
 
 if __name__ == "__main__":
